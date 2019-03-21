@@ -1,16 +1,33 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MaterialModule } from './modules/material.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+// import { AuthorizationComponent } from './authorization/authorization.component';
+import { AppRoutingModule } from './/app-routing.module';
+import {HttpClientModule} from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
+import { AuthorizationComponent } from './authorization/authorization.component';
+import { StatsComponent } from './stats/stats.component';
+import { CalculatorComponent } from './calculator/calculator.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    AuthorizationComponent,
+    StatsComponent,
+    CalculatorComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    MaterialModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

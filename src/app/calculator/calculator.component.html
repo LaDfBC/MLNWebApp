@@ -1,0 +1,29 @@
+<div class="calculator-hud">
+  <mat-label>Select Player: </mat-label>
+  <select matNativeControl required>
+    <option value="Kali McSuntas">Kali Mc Suntas</option>
+  </select>
+
+  <mat-label>Select Pitcher: </mat-label>
+  <select matNativeControl required>
+    <option value="Art Vandelay">Art Vandelay</option>
+  </select>
+
+  <br>
+  <br>
+  <label>Swing:
+    <input [(ngModel)]="swing" placeholder="Swing" style="margin-left: 3px">
+  </label>
+
+  <label>Pitch:
+    <input [(ngModel)]="pitch" placeholder="Pitch" style="margin-left: 3px">
+  </label>
+
+  <label>Diff:
+    <input [(ngModel)]="diff" placeholder="Diff" style="margin-left: 3px">
+  </label>
+
+  <label>Result:
+    <input [(ngModel)]="result" placeholder="Result" style="margin-left: 3px">
+  </label>
+</div>

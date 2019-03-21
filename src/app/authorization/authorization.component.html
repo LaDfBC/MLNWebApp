@@ -1,0 +1,17 @@
+<div>
+  <label>Username:
+    <input [(ngModel)]="username" placeholder="Username">
+  </label>
+  <br>
+  <label>Password:
+    <input [(ngModel)]="password" placeholder="Password" style="margin-left: 3px">
+  </label>
+</div>
+
+<button (click)="login()" class="testButton">Login</button>
+
+<div *ngIf="testResults">
+  <label>{{ testResults }}</label>
+</div>
+
+<button (click)="goBack()">Back</button>
