@@ -1,15 +1,45 @@
 <div class="calculator-hud">
-  <mat-label>Select Player: </mat-label>
-  <select matNativeControl required>
-    <option value="Kali McSuntas">Kali Mc Suntas</option>
+  <label class="select-label">Player: </label>
+<!--  <select [(ngModel)]="player">-->
+<!--    <option *ngFor="let player of testMap" [value]="player">{{player}}</option>-->
+<!--  </select>-->
+  <select [(ngModel)]="selectedPlayer">
+    <option *ngFor="let currentPlayer of playerMap" [ngValue]="currentPlayer">{{currentPlayer.full_player_name}}</option>
   </select>
-
-  <mat-label>Select Pitcher: </mat-label>
-  <select matNativeControl required>
-    <option value="Art Vandelay">Art Vandelay</option>
-  </select>
+  <label>Contact:
+    <input class="stats" [value]="selectedPlayer.contact">
+  </label>
+  <label>Eye:
+    <input class="stats" [value]="selectedPlayer.eye">
+  </label>
+  <label>Power:
+    <input class="stats" [value]="selectedPlayer.power">
+  </label>
+  <label>Speed:
+    <input class="stats" [value]="selectedPlayer.speed">
+  </label>
 
   <br>
+
+  <label class="select-label">Pitcher: </label>
+  <select [(ngModel)]="selectedPitcher">
+    <option *ngFor="let currentPitcher of pitcherMap" [ngValue]="currentPitcher">{{currentPitcher.full_player_name}}</option>
+  </select>
+  <label>Movement:
+    <input class="stats" [value]="selectedPlayer.movement">
+  </label>
+  <label>Command:
+    <input class="stats" [value]="selectedPlayer.command">
+  </label>
+  <label>Velocity:
+    <input class="stats" [value]="selectedPlayer.velocity">
+  </label>
+  <label>Awareness:
+    <input class="stats" [value]="selectedPlayer.awareness">
+  </label>
+
+  <br>
+
   <br>
   <label>Swing:
     <input [(ngModel)]="swing" placeholder="Swing" style="margin-left: 3px">
@@ -26,4 +56,6 @@
   <label>Result:
     <input [(ngModel)]="result" placeholder="Result" style="margin-left: 3px">
   </label>
+  <br>
+  <button (click)="getDiff(swing, pitch)">Submit</button>
 </div>
