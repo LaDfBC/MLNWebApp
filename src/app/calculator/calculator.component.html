@@ -6,16 +6,16 @@
   <select [(ngModel)]="selectedPlayer">
     <option *ngFor="let currentPlayer of playerMap" [ngValue]="currentPlayer">{{currentPlayer.full_player_name}}</option>
   </select>
-  <label>Contact:
-    <input class="stats" [value]="selectedPlayer.contact">
+  <label *ngIf="selectedPlayer">Contact:
+    <input class="stats" [value]="selectedPlayer.contact" placeholder="0">
   </label>
-  <label>Eye:
+  <label *ngIf="selectedPlayer">Eye:
     <input class="stats" [value]="selectedPlayer.eye">
   </label>
-  <label>Power:
+  <label *ngIf="selectedPlayer">Power:
     <input class="stats" [value]="selectedPlayer.power">
   </label>
-  <label>Speed:
+  <label *ngIf="selectedPlayer">Speed:
     <input class="stats" [value]="selectedPlayer.speed">
   </label>
 
@@ -25,17 +25,17 @@
   <select [(ngModel)]="selectedPitcher">
     <option *ngFor="let currentPitcher of pitcherMap" [ngValue]="currentPitcher">{{currentPitcher.full_player_name}}</option>
   </select>
-  <label>Movement:
-    <input class="stats" [value]="selectedPlayer.movement">
+  <label *ngIf="selectedPitcher">Movement:
+    <input class="stats" [value]="selectedPitcher.movement">
   </label>
-  <label>Command:
-    <input class="stats" [value]="selectedPlayer.command">
+  <label *ngIf="selectedPitcher">Command:
+    <input class="stats" [value]="selectedPitcher.command">
   </label>
-  <label>Velocity:
-    <input class="stats" [value]="selectedPlayer.velocity">
+  <label *ngIf="selectedPitcher">Velocity:
+    <input class="stats" [value]="selectedPitcher.velocity">
   </label>
-  <label>Awareness:
-    <input class="stats" [value]="selectedPlayer.awareness">
+  <label *ngIf="selectedPitcher">Awareness:
+    <input class="stats" [value]="selectedPitcher.awareness">
   </label>
 
   <br>
