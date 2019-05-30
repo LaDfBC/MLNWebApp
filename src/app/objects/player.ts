@@ -1,12 +1,12 @@
 export interface Player {
-  player_stats_name: String;
-  full_player_name: String;
-  player_id: String;
-  reddit_username: String;
-  discord_username: String;
-  primary_position: String;
-  secondary_position: String;
-  hand: String;
+  player_stats_name: string;
+  full_player_name: string;
+  player_id: string;
+  reddit_username: string;
+  discord_username: string;
+  primary_position: string;
+  secondary_position: string;
+  hand: string;
   contact: number;
   eye: number;
   power: number;
