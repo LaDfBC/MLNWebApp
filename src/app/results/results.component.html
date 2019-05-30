@@ -1,0 +1,39 @@
+<div class="results-hud">
+  <label class="select-label">Pitcher: </label>
+  <select [(ngModel)]="selectedPitcher" (change)="getResults(selectedPitcher.full_player_name)">
+    <option *ngFor="let currentPlayer of pitcherList" [ngValue]="currentPlayer">{{currentPlayer.full_player_name}}</option>
+  </select>
+  <br>
+  <table mat-table [dataSource]="resultList" class="mat-table">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="pitcher">
+      <th mat-header-cell *matHeaderCellDef> Pitcher </th>
+      <td mat-cell *matCellDef="let result"> {{result.pitcher}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="pitch">
+      <th mat-header-cell *matHeaderCellDef> Pitch </th>
+      <td mat-cell *matCellDef="let result"> {{result.pitch_number}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="result">
+      <th mat-header-cell *matHeaderCellDef> Result </th>
+      <td mat-cell *matCellDef="let result"> {{result.result}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="opponent">
+      <th mat-header-cell *matHeaderCellDef> Opponent</th>
+      <td mat-cell *matCellDef="let result"> {{result.offensive_team}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

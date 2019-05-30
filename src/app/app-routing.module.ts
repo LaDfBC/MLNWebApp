@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {AuthorizationComponent} from './authorization/authorization.component';
-import {StatsComponent} from './stats/stats.component';
+import {ResultsComponent} from './results/results.component';
 import {CalculatorComponent} from './calculator/calculator.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/stats', pathMatch: 'full'},
-  { path: 'authorize', component: AuthorizationComponent},
-  { path: 'stats', component: StatsComponent},
-  { path: 'calculator', component: CalculatorComponent}
+  { path: '', redirectTo: '/calculator', pathMatch: 'full'},
+  { path: 'calculator', component: CalculatorComponent},
+  { path: 'results', component: ResultsComponent}
 ];
 
 @NgModule({

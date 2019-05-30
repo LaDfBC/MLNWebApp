@@ -19,20 +19,4 @@ export class PlayerService {
       .toPromise()
       .then(data => data.body);
   }
-
-  //     .toPromise()
-  //     .map((response: Response) => {
-  //       return response.json() as Player[];
-  //     })
-  //     .then(value => {
-  //       console.log(value);
-  //       const playersToReturn: Player[] = null;
-  //       const player: Player = null;
-  //       const object: Object = JSON.parse(value.body.toString());
-  //
-  //       Object.keys(object).map(curr => playersToReturn.push(JSON.parse(curr)));
-  //
-  //       return playersToReturn;
-  //     });
-  // }
 }

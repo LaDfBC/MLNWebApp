@@ -12,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { AuthorizationComponent } from './authorization/authorization.component';
 import { StatsComponent } from './stats/stats.component';
 import { CalculatorComponent } from './calculator/calculator.component';
+import { ResultsComponent } from './results/results.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CalculatorComponent } from './calculator/calculator.component';
     HeaderComponent,
     AuthorizationComponent,
     StatsComponent,
-    CalculatorComponent
+    CalculatorComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,

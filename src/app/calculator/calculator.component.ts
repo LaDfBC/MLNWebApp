@@ -47,11 +47,6 @@ export class CalculatorComponent implements OnInit {
       });
   }
 
-  playerChanged(event): void {
-    console.log(event.target);
-    this.selectedPlayer = event.target.data;
-  }
-
   buildStatString(player: Player, isPitcher: boolean): string {
     if (isPitcher) {
       return player.movement + '|' + player.command + '|' + player.velocity + '|' + player.awareness + '|' + player.hand;
