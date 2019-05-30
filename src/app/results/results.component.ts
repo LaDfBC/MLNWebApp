@@ -26,7 +26,7 @@ export class ResultsComponent implements OnInit {
     );
   }
 
-  getResults(pitcher_name: String): void {
+  getResults(pitcher_name: string): void {
     this.resultService.getByPitcher(pitcher_name)
       .then(data => {
         this.resultList = data;
