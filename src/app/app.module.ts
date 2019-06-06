@@ -13,6 +13,7 @@ import { AuthorizationComponent } from './authorization/authorization.component'
 import { StatsComponent } from './stats/stats.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { ResultsComponent } from './results/results.component';
+import { RosterComponent } from './roster/roster.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ResultsComponent } from './results/results.component';
     AuthorizationComponent,
     StatsComponent,
     CalculatorComponent,
-    ResultsComponent
+    ResultsComponent,
+    RosterComponent
   ],
   imports: [
     BrowserModule,

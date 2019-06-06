@@ -1,8 +1,5 @@
 <div class="calculator-hud">
   <label class="select-label">Player: </label>
-<!--  <select [(ngModel)]="player">-->
-<!--    <option *ngFor="let player of testMap" [value]="player">{{player}}</option>-->
-<!--  </select>-->
   <select [(ngModel)]="selectedPlayer">
     <option *ngFor="let currentPlayer of playerMap" [ngValue]="currentPlayer">{{currentPlayer.full_player_name}}</option>
   </select>
@@ -50,7 +47,11 @@
   </label>
 
   <label>Diff:
-    <input [(ngModel)]="diff" placeholder="Diff" style="margin-left: 3px">
+    <input [(ngModel)]="diff" placeholder="Diff" disabled="true" style="margin-left: 3px">
+  </label>
+
+  <label *ngIf="showNiceMessage" style="color: seagreen;" id="niceMessageId">
+    Nice!
   </label>
 
   <label>Result:

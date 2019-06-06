@@ -1,5 +1,4 @@
-import { Injectable } from '@angular/core';
-import {Player} from '../app/objects/player';
+import {Injectable} from '@angular/core';
 import {map} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 import {Result} from '../app/objects/result';

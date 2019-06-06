@@ -15,4 +15,5 @@ export interface Player {
   command: number;
   velocity: number;
   awareness: number;
+  team_id: number;
 }

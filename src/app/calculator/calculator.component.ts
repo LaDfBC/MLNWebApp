@@ -9,6 +9,11 @@ import {Player} from '../objects/player';
   styleUrls: ['./calculator.component.css']
 })
 export class CalculatorComponent implements OnInit {
+  // selectedPlayer: Player;
+
+  constructor(private calculatorService: CalculatorService,
+              private playerService: PlayerService) {
+  }
   swing: string;
   pitch: string;
   diff: string;
@@ -17,10 +22,15 @@ export class CalculatorComponent implements OnInit {
   selectedPitcher: Player;
   playerMap: Player[];
   pitcherMap: Player[];
-  // selectedPlayer: Player;
 
-  constructor(private calculatorService: CalculatorService,
-              private playerService: PlayerService) {
+  showNiceMessage = false;
+
+  static buildStatString(player: Player, isPitcher: boolean): string {
+    if (isPitcher) {
+      return player.movement + '|' + player.command + '|' + player.velocity + '|' + player.awareness + '|' + player.hand;
+    }
+
+    return player.contact + '|' + player.eye + '|' + player.power + '|' + player.speed + '|' + player.hand;
   }
 
   ngOnInit() {
@@ -37,21 +47,16 @@ export class CalculatorComponent implements OnInit {
   getDiff(swing: string, pitch: string): void {
     this.calculatorService.getDiff(swing,
                                    pitch,
-                                   this.buildStatString(this.selectedPlayer, false),
-                                   this.buildStatString(this.selectedPitcher, true))
+                                   CalculatorComponent.buildStatString(this.selectedPlayer, false),
+                                   CalculatorComponent.buildStatString(this.selectedPitcher, true))
       .then(value => {
         const split_value = value.split('|');
         console.log(value);
         this.diff = split_value[0];
         this.result = split_value[1];
+
+        // It's what the people wanted
+        this.showNiceMessage = this.diff === '69';
       });
-  }
-
-  buildStatString(player: Player, isPitcher: boolean): string {
-    if (isPitcher) {
-      return player.movement + '|' + player.command + '|' + player.velocity + '|' + player.awareness + '|' + player.hand;
-    }
-
-    return player.contact + '|' + player.eye + '|' + player.power + '|' + player.speed + '|' + player.hand;
   }
 }

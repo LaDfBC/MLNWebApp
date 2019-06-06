@@ -1,0 +1,95 @@
+<div class="rosters-hud">
+  <label class="select-label">Team: </label>
+  <select [(ngModel)]="selectedTeam" (change)="getPlayers(selectedTeam.team_abbreviation)">
+    <option *ngFor="let currentTeam of teamList" [ngValue]="currentTeam">{{currentTeam.team_abbreviation}}</option>
+  </select>
+  <br>
+    <label>Position Players:</label>
+    <table mat-table [dataSource]="positionPlayerList" class="mat-table">
+      <!--- Defining the table displayed on screen. -->
+      <ng-container matColumnDef="full_player_name">
+        <th mat-header-cell *matHeaderCellDef>Player</th>
+        <td mat-cell *matCellDef="let player"> {{player.full_player_name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="reddit_username">
+        <th mat-header-cell *matHeaderCellDef>Reddit Username</th>
+        <td mat-cell *matCellDef="let player"> {{player.reddit_username}} </td>
+      </ng-container>
+      <ng-container matColumnDef="discord_username">
+        <th mat-header-cell *matHeaderCellDef>Discord Username</th>
+        <td mat-cell *matCellDef="let player"> {{player.discord_username}} </td>
+      </ng-container>
+      <ng-container matColumnDef="primary_position">
+        <th mat-header-cell *matHeaderCellDef>Primary Position</th>
+        <td mat-cell *matCellDef="let player"> {{player.primary_position}} </td>
+      </ng-container>
+      <ng-container matColumnDef="hand">
+        <th mat-header-cell *matHeaderCellDef>Hand</th>
+        <td mat-cell *matCellDef="let player"> {{player.hand}} </td>
+      </ng-container>
+      <ng-container matColumnDef="contact">
+        <th mat-header-cell *matHeaderCellDef>Contact</th>
+        <td mat-cell *matCellDef="let player"> {{player.contact}} </td>
+      </ng-container>
+      <ng-container matColumnDef="eye">
+        <th mat-header-cell *matHeaderCellDef>Eye</th>
+        <td mat-cell *matCellDef="let player"> {{player.eye}} </td>
+      </ng-container>
+      <ng-container matColumnDef="power">
+        <th mat-header-cell *matHeaderCellDef>Power</th>
+        <td mat-cell *matCellDef="let player"> {{player.power}} </td>
+      </ng-container>
+      <ng-container matColumnDef="speed">
+        <th mat-header-cell *matHeaderCellDef>Speed</th>
+        <td mat-cell *matCellDef="let player"> {{player.speed}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="positionPlayerColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: positionPlayerColumns;"></tr>
+    </table>
+
+    <label>Pitchers:</label>
+    <table mat-table [dataSource]="pitcherList" class="mat-table">
+
+      <!--- Defining the table displayed on screen. -->
+      <ng-container matColumnDef="full_player_name">
+        <th mat-header-cell *matHeaderCellDef>Player</th>
+        <td mat-cell *matCellDef="let player"> {{player.full_player_name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="reddit_username">
+        <th mat-header-cell *matHeaderCellDef>Reddit Username</th>
+        <td mat-cell *matCellDef="let player"> {{player.reddit_username}} </td>
+      </ng-container>
+      <ng-container matColumnDef="discord_username">
+        <th mat-header-cell *matHeaderCellDef>Discord Username</th>
+        <td mat-cell *matCellDef="let player"> {{player.discord_username}} </td>
+      </ng-container>
+      <ng-container matColumnDef="primary_position">
+        <th mat-header-cell *matHeaderCellDef>Primary Position</th>
+        <td mat-cell *matCellDef="let player"> {{player.primary_position}} </td>
+      </ng-container>
+      <ng-container matColumnDef="hand">
+        <th mat-header-cell *matHeaderCellDef>Hand</th>
+        <td mat-cell *matCellDef="let player"> {{player.hand}} </td>
+      </ng-container>
+      <ng-container matColumnDef="movement">
+        <th mat-header-cell *matHeaderCellDef>Movement</th>
+        <td mat-cell *matCellDef="let player"> {{player.movement}} </td>
+      </ng-container>
+      <ng-container matColumnDef="command">
+        <th mat-header-cell *matHeaderCellDef>Command</th>
+        <td mat-cell *matCellDef="let player"> {{player.command}} </td>
+      </ng-container>
+      <ng-container matColumnDef="velocity">
+        <th mat-header-cell *matHeaderCellDef>Velocity</th>
+        <td mat-cell *matCellDef="let player"> {{player.velocity}} </td>
+      </ng-container>
+      <ng-container matColumnDef="awareness">
+        <th mat-header-cell *matHeaderCellDef>Awareness</th>
+        <td mat-cell *matCellDef="let player"> {{player.awareness}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="pitcherColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: pitcherColumns;"></tr>
+    </table>
+</div>
