@@ -14,6 +14,10 @@ import { StatsComponent } from './stats/stats.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { ResultsComponent } from './results/results.component';
 import { RosterComponent } from './roster/roster.component';
+import { LoginComponent } from './login/login.component';
+import { PlayerSignupComponent } from './login/player-signup/player-signup.component';
+import { SignInComponent } from './login/sign-in/sign-in.component';
+import { CreateUserComponent } from './login/create-user/create-user.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,11 @@ import { RosterComponent } from './roster/roster.component';
     StatsComponent,
     CalculatorComponent,
     ResultsComponent,
-    RosterComponent
+    RosterComponent,
+    LoginComponent,
+    PlayerSignupComponent,
+    SignInComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,

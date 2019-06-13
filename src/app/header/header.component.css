@@ -19,3 +19,7 @@ header a:hover, a.active, a.visited .mat-icon{
 header a.title_link .mat-icon{
 
 }
+
+.fill-header-space {
+  flex: 1 1 auto;
+}

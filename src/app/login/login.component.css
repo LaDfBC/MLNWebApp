@@ -1,0 +1,39 @@
+.standard-input {
+  border-radius: 15px;
+  border: 2px solid deepskyblue;
+  padding: 10px;
+  height: 5px;
+  background: gray;
+  color: white;
+  white-space: nowrap;
+}
+
+.standard-label {
+  display: inline-block;
+  width: 475px;
+  text-align: left;
+  vertical-align: center;
+}
+
+.tight-label {
+  display: inline-block;
+  width: 140px;
+  text-align: left;
+  vertical-align: center;
+}
+
+.reminder-text {
+  display: inline-block;
+  color: red;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.primary-button {
+  height: 30px;
+  width: 70px;
+  background-color: deepskyblue;
+  color: white;
+}
+
+

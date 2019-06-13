@@ -1,15 +1,32 @@
 <!--END HEADER - GET A COMPONENT FOR THIS -->
-<mat-sidenav-container fxflexFill>
+<mat-sidenav-container>
   <mat-sidenav mode="side" opened="true">
     <app-header></app-header>
-    <nav>
-      <a routerLink="/calculator" routerLinkActive="active">Calculator</a>
-      <a routerLink="/results" routerLinkActive="active">Result Master Log</a>
-      <a routerLink="/rosters" routerLinkActive="active">Team Rosters</a>
+    <nav style="width: 240px">
+      <a [routerLink]="['/calculator']" routerLinkActive="active" class="base-nav-a">Calculator</a>
+      <a [routerLink]="['/results']" routerLinkActive="active" class="base-nav-a">Result Master Log</a>
+      <a [routerLink]="['/rosters']" routerLinkActive="active" class="base-nav-a">Team Rosters</a>
+      <hr>
+      <a [routerLink]="['/login?tab=2']" routerLinkActive="active" class="new-player-nav-a">New player? Sign up here!</a>
     </nav>
   </mat-sidenav>
   <mat-sidenav-content>
-    <div style="background-color: #181818; height: 64px;"></div>
+    <div style="height: 64px; background-color: #212121">
+      <div class="auth-div">
+        <span class="login-span">
+          <a fxFlex="90" routerLink="/login" [queryParams]="{'tab': 0}" routerLinkActive="active" class="login-link">
+          Log In
+        </a>
+        </span>
+      <!--Just need a little space between the links here        -->
+        <span style="margin-right: 5px"></span>
+        <span class="signup-span">
+        <a fxFlex="90" routerLink="/login" [queryParams]="{'tab': 1}" routerLinkActive="active" class="signup-link" style="">
+          Sign Up
+        </a>
+        </span>
+      </div>
+    </div>
 
     <router-outlet></router-outlet>
   </mat-sidenav-content>

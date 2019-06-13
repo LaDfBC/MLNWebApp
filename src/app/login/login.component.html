@@ -1,0 +1,17 @@
+<div style="text-align: center">
+  <mat-tab-group [selectedIndex]="selectedIndex" (selectedTabChange)="updateUrl($event.index)">
+    <mat-tab label="Log In" [tabIndex]="0">
+      <app-sign-in></app-sign-in>
+    </mat-tab>
+
+    <mat-tab label="Sign Up" [tabIndex]="1">
+      <app-create-user></app-create-user>
+    </mat-tab>
+
+    <mat-tab label="Create Player" [tabIndex]="2">
+      <app-player-signup></app-player-signup>
+    </mat-tab>
+  </mat-tab-group>
+
+  <router-outlet></router-outlet>
+</div>
