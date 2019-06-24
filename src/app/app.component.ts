@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mlnstats';
+  okClicked = false;
+
+  hideConsent(): void {
+    this.okClicked = true;
+  }
 }

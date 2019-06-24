@@ -5,7 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.css', '../app.component.css'],
   providers: [Location, { provide: LocationStrategy, useClass: PathLocationStrategy}]
 })
 export class LoginComponent implements OnInit {

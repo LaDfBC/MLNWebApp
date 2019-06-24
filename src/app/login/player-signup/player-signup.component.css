@@ -1,0 +1,7 @@
+.signup-div {
+  transition: ease-in-out 400ms;
+}
+
+.signup-div.second {
+  transition: ease-in-out 600ms;
+}

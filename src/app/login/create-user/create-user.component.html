@@ -3,35 +3,58 @@
   <label>Already have a player? Sign up for the website here!</label>
   <p>
     <label>
-      <span class="tight-label">Username: </span>
-      <input class="standard-input"/>
+      <span class="tight-label" >Username: </span>
+      <input [ngModel]="username" [ngClass]="{'standard-input': !invalidUsername, 'error-input': invalidUsername}"/>
     </label>
+  </p>
+  <br>
   <p>
     <label>
       <span class="tight-label">Email: </span>
-      <input class="standard-input"/>
+      <input [ngModel]="email" class="standard-input"/>
     </label>
-  <p>
     <label>
       <span class="reminder-text">*Don't worry about email unless you don't have Reddit.</span>
     </label>
+  </p>
+  <br>
   <p>
     <label>
       <span class="tight-label">Password: </span>
-      <input class="standard-input"/>
+      <input type="password" (change)="passwordsMatch()" [(ngModel)]="password" [ngClass]="{'standard-input': validPasswords, 'error-input': !validPasswords}"/>
     </label>
+  </p>
+  <br>
   <p>
     <label>
       <span class="tight-label">Repeat Password: </span>
-      <input class="standard-input"/>
+      <input type="password" (change)="passwordsMatch()" [(ngModel)]="repeatPassword" [ngClass]="{'standard-input': validPasswords, 'error-input': !validPasswords}"/>
     </label>
+  </p>
+  <br>
   <p>
     <label>
       <span class="tight-label">Player Name:</span>
-      <input class="standard-input"/>
+      <select [(ngModel)]="selectedPlayer" [ngClass]="{'standard-input': true}">
+        <option *ngFor="let currentPlayer of playerList" [ngValue]="currentPlayer">{{currentPlayer.full_player_name}}</option>
+      </select>
     </label>
+  </p>
+  <br>
   <p>
-    <button class="primary-button">
+    <label [hidden]="validPasswords">
+      <span class="reminder-text">Passwords do not match!</span>
+    </label>
+  </p>
+  <br>
+  <p>
+  <label [hidden]="!invalidUsername">
+    <span class="reminder-text">Username must be filled in!</span>
+  </label>
+  </p>
+  <br>
+  <p>
+    <button class="primary-button" (click)="trySignup()">
       Create!
     </button>
   </p>

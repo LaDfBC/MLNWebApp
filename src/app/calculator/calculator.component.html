@@ -1,6 +1,6 @@
 <div class="calculator-hud">
   <label class="select-label">Player: </label>
-  <select [(ngModel)]="selectedPlayer">
+  <select [(ngModel)]="selectedPlayer" class="player-input">
     <option *ngFor="let currentPlayer of playerMap" [ngValue]="currentPlayer">{{currentPlayer.full_player_name}}</option>
   </select>
   <label *ngIf="selectedPlayer">Contact:

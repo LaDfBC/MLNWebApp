@@ -94,3 +94,33 @@ mat-sidenav-container {
   border-radius: 4px;
   border: 2px solid cornflowerblue;
 }
+
+.okButton {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  color: deepskyblue;
+}
+
+.okButton:hover {
+  color: cornflowerblue;
+}
+
+.primary-button {
+  height: 30px;
+  width: 70px;
+  background-color: deepskyblue;
+  color: white;
+}
+
+.secondary-button {
+  color: orange;
+  font-size: 14px;
+  text-decoration: none !important;
+  background: none;
+  border: none;
+  cursor: pointer;
+}

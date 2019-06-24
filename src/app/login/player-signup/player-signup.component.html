@@ -1,64 +1,153 @@
-<div>
+<div class="signup-div" *ngIf="showSecond">
   <br>
   <label>Hey there!  Welcome to Baseball by the Numbers!</label>
   <p>
     <label>
       <span class="standard-label">Reddit Username: </span>
-      <input class="standard-input"/>
+      <input class="standard-input" [(ngModel)]="redditUsername"/>
     </label>
+  </p>
+  <br>
   <p>
     <label>
       <span class="reminder-text">*Reddit not required but highly recommended!</span>
     </label>
+  </p>
+  <br>
   <p>
     <label>
       <span class="standard-label">Give your player a name: </span>
-      <input class="standard-input"/>
+      <input class="standard-input" [(ngModel)]="playerName" [ngClass]="{'standard-input': !missingPlayername, 'error-input': missingPlayername}"/>
     </label>
+  </p>
+  <br>
   <p>
     <label>
-      <span class="standard-label">What hand would you like to be dominant: </span>
-      <input class="standard-input"/>
+      <span class="standard-label">Which hand would you like to be dominant?</span>
+      <select class="standard-input"
+              [(ngModel)]="selectedHand"
+              [ngClass]="{'standard-input': !missingHand, 'error-input': missingHand}">
+        <option *ngFor="let hand of handedness"
+                [ngValue]="hand"
+                [ngClass]="{'standard-input': !missingHand, 'error-input': missingHand}">{{hand.name}}</option>
+      </select>
     </label>
+  </p>
+  <br>
   <p>
     <label>
-      <span class="standard-label">What position do you want to play: </span>
-      <input class="standard-input"/>
+      <span class="standard-label">What Position do you want to play?</span>
+      <select class="standard-input"
+              [(ngModel)]="position"
+              (change)="updatePosition()"
+              [ngClass]="{'standard-input': !missingPosition, 'error-input': missingPosition}">
+        <option *ngFor="let currentPosition of positionList"
+                [ngValue]="currentPosition.name"
+                [ngClass]="{'standard-input': !missingPosition, 'error-input': missingPosition}">{{currentPosition.name}}</option>
+      </select>
     </label>
+  </p>
+  <br>
   <p>
-    <label>
+    <label *ngIf="isInfieldNotCatcher">
       <span class="standard-label">What would you like your secondary position to be: </span>
-      <input class="standard-input"/>
+      <select class="standard-input"
+              [(ngModel)]="secondaryPosition"
+              [ngClass]="{'standard-input': !missingSecondary, 'error-input': missingSecondary}">
+        <option *ngFor="let position of secondaryPositionList"
+                 [ngValue]="position.name"
+                [ngClass]="{'standard-input': !missingSecondary, 'error-input': missingSecondary}">{{position.name}}</option>
+      </select>
     </label>
+  </p>
+  <br>
+  <p *ngIf="missingPlayername">
+    <br>
+    <label>
+      <span class="reminder-text">Please choose a player name!</span>
+    </label>
+  </p>
+  <p *ngIf="missingHand">
+    <br>
+    <label>
+      <span class="reminder-text">Please select the handedness of your player!</span>
+    </label>
+  </p>
+  <br>
+  <p *ngIf="missingPosition">
+    <label>
+      <span class="reminder-text">Please choose a primary position!</span>
+    </label>
+  </p>
+  <p *ngIf="missingSecondary">
+    <br>
+    <label>
+      <span class="reminder-text">Please choose a secondary position!</span>
+    </label>
+  </p>
+  <button class="primary-button" (click)="switchToSecond()">
+    Next!
+  </button>
+</div>
+<div class="signup-div" [hidden]="showSecond">
+  <br>
+  <label>Alright, Let's get some stats! The total of all 4 stats must be 12, with a minimum of 1 and a maximum of 5 per stat.</label>
+  <br>
   <p>
     <label>
-      <span class="standard-label">What would you like your secondary position to be: </span>
-      <input class="standard-input"/>
+      <span class="standard-label">{{movement}}</span>
+      <select class="standard-input" [(ngModel)]="movementVal" (change)="setTotal()">
+        <option *ngFor="let currentValue of statValues" [ngValue]="currentValue">{{currentValue}}</option>
+      </select>
     </label>
+  </p>
+  <br>
   <p>
-    <label>Alright, Let's get some stats! The total of all 4 stats must be 12, with a minimum of 1 and a maximum of 5 per stat.</label>
+  <label>
+    <span class="standard-label">{{command}}</span>
+    <select class="standard-input" [(ngModel)]="commandVal" (change)="setTotal()">
+      <option *ngFor="let currentValue of statValues" [ngValue]="currentValue">{{currentValue}}</option>
+    </select>
+  </label>
+  </p>
+  <br>
   <p>
     <label>
-      <span class="standard-label">Movement (Pitchers) / Contact (Batters) (Affects K and 1B): </span>
-      <input class="standard-input"/>
+      <span class="standard-label">{{velocity}}</span>
+      <select class="standard-input" [(ngModel)]="velocityVal" (change)="setTotal()">
+        <option *ngFor="let currentValue of statValues" [ngValue]="currentValue">{{currentValue}}</option>
+      </select>
     </label>
+  </p>
+  <br>
   <p>
     <label>
-      <span class="standard-label">Command (Pitchers) / Eye (Batters) (Affects BB and 1B):  </span>
-      <input class="standard-input"/>
+      <span class="standard-label">{{awareness}}</span>
+      <select class="standard-input" [(ngModel)]="awarenessVal" (change)="setTotal()">
+        <option *ngFor="let currentValue of statValues" [ngValue]="currentValue">{{currentValue}}</option>
+      </select>
     </label>
+  </p>
+  <br>
   <p>
     <label>
-      <span class="standard-label">Velocity (Pitchers) / Power (Batters) (Affects HR, PO, and FO):  </span>
-      <input class="standard-input"/>
+      <span class="standard-label">Total:</span>
+      <input [ngClass]="{'standard-input': totalEqualsTwelve, 'error-input': !totalEqualsTwelve}"
+             disabled="true"
+             [(ngModel)]="total"/>
+      <div [hidden]="totalEqualsTwelve">
+        <br>
+        <label class="reminder-text">Total value of all stats must equal 12!</label>
+      </div>
     </label>
+  </p>
+  <br>
   <p>
-    <label>
-      <span class="standard-label">Awareness (Pitchers) / Speed (Batters) (Affects 1B, 2B, 3B, GO, SB):  </span>
-      <input class="standard-input"/>
-    </label>
-  <p>
-    <button class="primary-button">
-      Sign up!
-    </button>
+  <button class="secondary-button" (click)="showSecond = !showSecond">
+    Back
+  </button>
+  <button class="primary-button" >
+    Sign up!
+  </button>
+  </p>
 </div>

@@ -4,16 +4,18 @@
   <p>
     <label>
       <span class="tight-label">Username: </span>
-      <input class="standard-input"/>
+      <input class="standard-input" [ngModel]="username"/>
     </label>
+  </p>
+  <br>
   <p>
     <label>
       <span class="tight-label">Password: </span>
-      <input class="standard-input"/>
+      <input class="standard-input" [ngModel]="password"/>
     </label>
-  <p>
-    <button class="primary-button">
+  </p>
+  <br>
+    <button class="primary-button" (click)="tryLogin(username, password)">
       Sign in
     </button>
-  </p>
 </div>

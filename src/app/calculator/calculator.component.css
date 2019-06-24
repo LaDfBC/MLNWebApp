@@ -1,3 +1,14 @@
 table {
   width: 100%;
 }
+
+.player-input {
+  border-radius: 15px;
+  border: 2px solid deepskyblue;
+  /*padding: 10px;*/
+  height: 20px;
+  background: gray;
+  white-space: nowrap;
+  color:white;
+}
+

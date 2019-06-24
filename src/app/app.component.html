@@ -7,10 +7,13 @@
       <a [routerLink]="['/results']" routerLinkActive="active" class="base-nav-a">Result Master Log</a>
       <a [routerLink]="['/rosters']" routerLinkActive="active" class="base-nav-a">Team Rosters</a>
       <hr>
-      <a [routerLink]="['/login?tab=2']" routerLinkActive="active" class="new-player-nav-a">New player? Sign up here!</a>
+      <a [routerLink]="['/login']" [queryParams]="{tab: 2}" routerLinkActive="active" class="new-player-nav-a">New player? Sign up here!</a>
     </nav>
   </mat-sidenav>
   <mat-sidenav-content>
+    <div [hidden]="okClicked">
+      Hey, this site uses cookies to keep you logged in and the site running smoother! Hit <button class="okButton" (click)="hideConsent()">ok</button> to consent and make this header go away!
+    </div>
     <div style="height: 64px; background-color: #212121">
       <div class="auth-div">
         <span class="login-span">
