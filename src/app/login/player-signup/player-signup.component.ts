@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../../../services/auth.service';
+import {Player} from '../../objects/player';
+import apply = Reflect.apply;
 
 @Component({
   selector: 'app-player-signup',
@@ -38,7 +41,7 @@ export class PlayerSignupComponent implements OnInit {
   // private statValues = [{val: 1}, {val: 2}, {val: 3}, {val: 4}, {val: 5}];
   private statValues = [1, 2, 3, 4, 5];
 
-  constructor() { }
+  constructor(private authService: AuthService) {}
 
   showSecond = true;
   total: number;
@@ -119,6 +122,35 @@ export class PlayerSignupComponent implements OnInit {
     this.total = this.awarenessVal + this.velocityVal + this.commandVal + this.movementVal;
 
     this.totalEqualsTwelve = (this.total === 12);
+  }
+
+  trySignup(): void {
+    let playerInCreation: Player;
+    playerInCreation.full_player_name = this.playerName;
+    playerInCreation.player_stats_name = this.playerName;
+    playerInCreation.reddit_username = this.redditUsername;
+    playerInCreation.discord_username = this.discordUsername;
+    playerInCreation.primary_position = this.position;
+    playerInCreation.secondary_position = this.secondaryPosition;
+    playerInCreation.hand = this.selectedHand;
+
+    if (this.isPitcher) {
+      playerInCreation.movement = this.movementVal;
+      playerInCreation.velocity = this.velocityVal;
+      playerInCreation.awareness = this.awarenessVal;
+      playerInCreation.command = this.commandVal;
+    } else {
+      playerInCreation.contact = this.movementVal;
+      playerInCreation.speed = this.awarenessVal;
+      playerInCreation.power = this.velocityVal;
+      playerInCreation.eye = this.commandVal;
+    }
+
+    this.authService.addUserAndPlayer(this.redditUsername, this.email, this.password, playerInCreation)
+      .then({
+        this.this.authServic
+      })
+      .catch()
   }
 
   switchToSecond() {
