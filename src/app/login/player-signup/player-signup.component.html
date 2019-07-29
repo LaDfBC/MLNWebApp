@@ -16,6 +16,13 @@
   <br>
   <p>
     <label>
+      <span class="standard-label">Discord Username: </span>
+      <input class="standard-input" [(ngModel)]="discordUsername"/>
+    </label>
+  </p>
+  <br>
+  <p>
+    <label>
       <span class="standard-label">Give your player a name: </span>
       <input class="standard-input" [(ngModel)]="playerName" [ngClass]="{'standard-input': !missingPlayername, 'error-input': missingPlayername}"/>
     </label>

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../../services/auth.service';
 import {Player} from '../../objects/player';
-import apply = Reflect.apply;
+import {IndexedDbService} from '../../../indexedDb.service';
 
 @Component({
   selector: 'app-player-signup',
@@ -41,7 +41,8 @@ export class PlayerSignupComponent implements OnInit {
   // private statValues = [{val: 1}, {val: 2}, {val: 3}, {val: 4}, {val: 5}];
   private statValues = [1, 2, 3, 4, 5];
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,
+              private indexedDbService: IndexedDbService) {}
 
   showSecond = true;
   total: number;
@@ -49,6 +50,7 @@ export class PlayerSignupComponent implements OnInit {
   isPitcher: boolean;
   isInfieldNotCatcher: boolean;
   redditUsername: string;
+  discordUsername: string;
   playerName: string = null;
   selectedHand: string = null;
   position: string = null;
@@ -68,6 +70,10 @@ export class PlayerSignupComponent implements OnInit {
   missingHand = false;
   missingPosition = false;
   missingSecondary = false;
+
+  email: string;
+  password: string;
+  username: string;
 
   ngOnInit() {
   }
@@ -125,7 +131,7 @@ export class PlayerSignupComponent implements OnInit {
   }
 
   trySignup(): void {
-    let playerInCreation: Player;
+    const playerInCreation = {} as Player;
     playerInCreation.full_player_name = this.playerName;
     playerInCreation.player_stats_name = this.playerName;
     playerInCreation.reddit_username = this.redditUsername;
@@ -147,10 +153,10 @@ export class PlayerSignupComponent implements OnInit {
     }
 
     this.authService.addUserAndPlayer(this.redditUsername, this.email, this.password, playerInCreation)
-      .then({
-        this.this.authServic
-      })
-      .catch()
+      .then(() =>
+        this.indexedDbService.signPlayerIn(this.username)
+          .catch(() => console.log('Failed to sign in!'))
+      );
   }
 
   switchToSecond() {
